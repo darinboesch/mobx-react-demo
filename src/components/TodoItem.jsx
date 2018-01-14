@@ -2,15 +2,15 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 @observer
-export default class TodoView extends React.Component {
+export default class TodoItem extends React.Component {
   render() {
     const todo = this.props.todo;
     return (
       <li onDoubleClick={ this.onRename }>
         <input
           type='checkbox'
-          checked={ todo.completed }
-          onChange={ this.onToggleCompleted }
+          checked={ todo.finished }
+          onChange={ this.onToggleFinished }
         />
         { todo.task }
         { todo.assignee
@@ -21,9 +21,9 @@ export default class TodoView extends React.Component {
     );
   }
 
-  onToggleCompleted = () => {
+  onToggleFinished = () => {
     const todo = this.props.todo;
-    todo.completed = !todo.completed;
+    todo.finished = !todo.finished;
   }
 
   onRename = () => {

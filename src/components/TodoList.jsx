@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import TodoView from './TodoView';
+import TodoItem from './TodoItem';
 
+// this decorator wraps the component 'render' method in 'autorun'
+// so that state can be updated by the store
 @observer
 export default class TodoList extends React.Component {
   render() {
@@ -11,7 +13,7 @@ export default class TodoList extends React.Component {
         { store.report }
         <ul>
         { store.todos.map(
-          (todo, idx) => <TodoView todo={ todo } key={ idx } />
+          (todo, idx) => <TodoItem todo={ todo } key={ idx } />
         ) }
         </ul>
         <button onClick={ this.onNewTodo }>New Todo</button>
@@ -21,6 +23,6 @@ export default class TodoList extends React.Component {
   }
 
   onNewTodo = () => {
-    this.props.store.addTodo(prompt('Enter a new todo:','coffee plz'));
+    this.props.store.addTodo({ task: (prompt('Enter a new todo:','coffee plz')) });
   }
 }

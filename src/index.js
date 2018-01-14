@@ -7,7 +7,7 @@ import './index.css';
 
 import TodoList from "./components/TodoList";
 import TodoListModel from "./models/TodoListModel";
-// import TodoModel from "./models/TodoModel";
+import PeopleModel from "./models/PeopleModel";
 
 const store = new TodoListModel();
 
@@ -22,13 +22,17 @@ render(
 );
 
 // registerServiceWorker();
-store.addTodo("Get Coffee");
-store.addTodo("Write simpler code");
+store.addTodo({ task: "Get Coffee" });
+store.addTodo({ task: "Write simpler code" });
 store.todos[0].finished = true;
 
 setTimeout(() => {
-  store.addTodo("Get a cookie as well");
-}, 2000);
+  store.addTodo({ task: "Get a cookie as well", assignee: new PeopleModel("Me!") });
+}, 5000);
+
+setTimeout(() => {
+  store.todos[1].assignee.name = "Test name";
+}, 10000);
 
 // playing around in the console
 window.store = store;
