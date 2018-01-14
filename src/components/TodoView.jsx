@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 
 @observer
@@ -17,7 +17,6 @@ export default class TodoView extends React.Component {
           ? <small>{ todo.assignee.name }</small>
           : null
         }
-        <RenderCounter />
       </li>
     );
   }

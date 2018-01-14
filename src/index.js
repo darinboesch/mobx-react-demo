@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import DevTools from 'mobx-react-devtools';
 import './index.css';
 // import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 import TodoList from "./components/TodoList";
 import TodoListModel from "./models/TodoListModel";
-import TodoModel from "./models/TodoModel";
+// import TodoModel from "./models/TodoModel";
 
 const store = new TodoListModel();
 
